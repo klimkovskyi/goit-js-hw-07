@@ -13,6 +13,7 @@ function createBoxes(amount) {
   
   container.innerHTML = '';
   let size = 30;
+  const boxes = [];
 
   for (let i = 0; i < amount; i++) {
     const box = document.createElement('div');
@@ -20,18 +21,18 @@ function createBoxes(amount) {
     box.style.height = size + 'px';
     box.style.backgroundColor = getRandomHexColor();
     size += 10;
-    container.append(box);
+    boxes.push(box);
   }
 
-  return container;
+  return container.append(...boxes);
 }
 
 createBtn.addEventListener('click', () => {
   const amount = parseInt(input.value);
+  input.value = '';
 
   if (amount >= 1 && amount <= 100) {
     createBoxes(amount);
-    input.value = '';
   }
 })
 
